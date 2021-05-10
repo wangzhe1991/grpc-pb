@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package grpc_pb;
+
+service CustomerService {
+    rpc Create (CustomerCreatereq) returns (CreateId);
+}
+
+message CreateId {
+    int32 id = 1;
+}
+
+message CustomerCreatereq {
+    string phone = 1;
+    int32 gender = 2;
+    string customer_name = 3;
+    int32 customer_id = 4;
+}
