@@ -3,16 +3,47 @@ syntax = "proto3";
 package grpc_pb;
 
 service CustomerService {
-    rpc Create (CustomerCreatereq) returns (CreateId);
+    rpc Create (CustomerCreateReq) returns (CustomerCreateResp);
+    rpc List (CustomerListReq) returns (CustomerListResp);
+    rpc Delete (IdReq) returns (CustomerListResp);
 }
-
-message CreateId {
+message IdReq {
     int32 id = 1;
 }
 
-message CustomerCreatereq {
-    string phone = 1;
-    int32 gender = 2;
-    string customer_name = 3;
-    int32 customer_id = 4;
+message CustomerCreateResp {
+    int32 id = 1;
+    string sfid = 2;
+}
+
+message CustomerCreateReq {
+    string phone_number = 1;
+    string email = 2;
+    string phone_area_code = 3;
+    string password = 4;
+    string first_name = 5;
+	string last_name = 6;
+	int32 gender = 7;
+	string birthday = 8;
+}
+
+message CustomerListReq {
+    int32 page_size = 1;
+    int32 page_index = 2;
+    string keyword = 3;
+}
+
+message CustomerListResp {
+    message One {
+        int32 id = 1;
+        string sfid = 2;
+        string phone_number = 3;
+        string email = 4;
+        string phone_area_code = 5;
+        string first_name = 6;
+        string last_name = 7;
+        string current_university = 8;
+    }
+    repeated One data = 1;
+    int64 total = 2;
 }
