@@ -1,7 +1,7 @@
 .PHONY: gitag all common user region
 # 注意: 新的protoc-gen-go插件已经不支持plugins选项
 
-export TagName := v1.0.10
+export TagName := v1.0.1
 .PHONY: gitag
 gitag:
 	git add . && git commit -m "$(TagName)"
