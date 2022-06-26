@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package grpc_sdk.user;
-option go_package = "github.com/wangzhe1991/grpc-sdk/user";
+option go_package = "github.com/wangzhe1991/sdk/user";
 
 import "user_enum.proto";
 import "public.proto";
