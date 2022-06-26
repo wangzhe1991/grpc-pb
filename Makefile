@@ -1,7 +1,7 @@
 .PHONY: gitag all common user region
 # 注意: 新的protoc-gen-go插件已经不支持plugins选项
 
-export TagName := v1.0.3
+export TagName := v1.0.4
 .PHONY: gitag
 gitag:
 	git add . && git commit -m "$(TagName)"
@@ -33,3 +33,6 @@ region :
 	--go_out=. \
 	--go-grpc_out=. \
 	proto/region/*.proto
+
+mv :
+	mv mv github.com/wangzhe1991/grpc-sdk/* ./
