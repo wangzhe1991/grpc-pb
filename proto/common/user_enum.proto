@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package grpc_sdk.common;
+option go_package = "github.com/wangzhe1991/grpc-sdk/common";
+
+// 性别
+enum Gender {
+	GENDER_UNKNOW = 0; // 未填写
+	GENDER_MALE   = 1; // 男性
+	GENDER_FEMALE = 2; // 女性
+}
+
+// 会员等级
+enum CustomerLevel {
+	CUSTOMER_LEVEL_ORDINARY = 0;  // 普通
+	CUSTOMER_LEVEL_BRONZE   = 10; // 青铜
+	CUSTOMER_LEVEL_SILVER   = 20; // 白银
+	CUSTOMER_LEVEL_GOLD     = 30; // 黄金
+}

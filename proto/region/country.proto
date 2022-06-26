@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package grpc_sdk.region;
+option go_package = "github.com/wangzhe1991/grpc-sdk/region";
+
+import "public.proto";
+
+// 世界各国家编码相关
+service Country {
+    rpc List (grpc_sdk.common.EmptyRequest) returns (CountryListResp);
+    rpc Detail (grpc_sdk.common.EmptyRequest) returns (CountryListResp);
+}
+
+message CountryListResp {
+    message One {
+        string cn_name      = 1;
+        string en_name      = 2;
+        string en_full_name = 3;
+        string en_code2     = 4;
+        string en_code3     = 5;
+        string num_code     = 6;
+        int32 phone_code    = 7;
+    }
+    repeated One data = 1;
+}

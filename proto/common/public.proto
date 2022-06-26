@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package grpc_sdk.common;
+option go_package = "github.com/wangzhe1991/grpc-sdk/common";
+
+// 空请求
+message EmptyRequest {}
+
+// 空返回
+message EmptyResponse {}
+
+// ID
+message ID {
+    int32 id = 1;
+}
+// 雪花ID
+message SFID {
+    int64 sfid = 1;
+}
+
+// 简单标准列表请求
+message ListRequest {
+    bool is_all      = 1;
+    int32 page_index = 2;
+    int32 page_size  = 3;
+    string keyword   = 4;
+    int64 start_time = 5;
+    int64 end_time   = 6;
+}

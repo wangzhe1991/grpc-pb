@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package grpc_sdk.user;
+option go_package = "github.com/wangzhe1991/grpc-sdk/user";
+
+import "user_enum.proto";
+import "public.proto";
+
+service User {
+    rpc Create (UserCreateReq) returns (UserCreateResp);
+    rpc List (UserListReq) returns (UserListResp);
+    rpc Delete (grpc_sdk.common.ID) returns (grpc_sdk.common.EmptyResponse);
+    rpc Detail (grpc_sdk.common.ID) returns (UserDetailResp);
+    rpc Export (UserListReq) returns (UserListExportResp);
+    rpc DetailBySFID (grpc_sdk.common.SFID) returns (UserDetailResp);
+}
+
+message UserCreateResp {
+    int32 id = 1;
+    string sfid = 2;
+}
+
+message UserCreateReq {
+    string phone_number           = 1;
+    string email                  = 2;
+    string phone_area_code        = 3;
+    string password               = 4;
+    string first_name             = 5;
+    string last_name              = 6;
+    grpc_sdk.common.Gender gender = 7;
+    string birthday               = 8;
+}
+
+message UserListReq {
+    bool is_all      = 1;
+    int32 page_index = 2;
+    int32 page_size  = 3;
+    string keyword   = 4;
+}
+
+message UserListResp {
+    message One {
+        int32 id                  = 1;
+        string sfid               = 2;
+        string phone_number       = 3;
+        string email              = 4;
+        string phone_area_code    = 5;
+        string first_name         = 6;
+        string last_name          = 7;
+        string current_university = 8;
+    }
+    repeated One data = 1;
+    int64 total       = 2;
+}
+
+message UserDetailResp {
+    int32 id                  = 1;
+    string sfid               = 2;
+    string phone_number       = 3;
+    string email              = 4;
+    string phone_area_code    = 5;
+    string first_name         = 6;
+    string last_name          = 7;
+    string current_university = 8;
+    string password           = 9;
+}
+
+message UserListExportResp {
+    string path  = 1;
+    string file  = 2;
+    string title = 3;
+}
