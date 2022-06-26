@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package grpc_sdk.common;
-option go_package = "github.com/wangzhe1991/grpc-sdk/common";
+option go_package = "github.com/wangzhe1991/grpc-sdk/pb/common";
 
 // 空请求
 message EmptyRequest {}

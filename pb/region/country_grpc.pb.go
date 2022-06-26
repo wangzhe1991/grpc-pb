@@ -8,7 +8,7 @@ package region
 
 import (
 	context "context"
-	common "github.com/wangzhe1991/grpc-sdk/common"
+	common "github.com/wangzhe1991/grpc-sdk/pb/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
