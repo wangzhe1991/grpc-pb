@@ -7,7 +7,7 @@
 package errorx
 
 import (
-	_ "github.com/wangzhe1991/grpc-sdk/vendor/errors"
+	_ "gitee.com/krio/protoc-gen-go-errors/errors"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

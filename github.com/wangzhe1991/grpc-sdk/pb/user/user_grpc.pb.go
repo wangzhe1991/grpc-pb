@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.19.0
-// source: user_error.proto
+// source: user.proto
 
 package user
 
@@ -132,7 +132,7 @@ func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
 
 // UnsafeUserServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to UserServer will
-// result in compilation errorx.
+// result in compilation errors.
 type UnsafeUserServer interface {
 	mustEmbedUnimplementedUserServer()
 }
@@ -282,5 +282,5 @@ var User_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "user_error.proto",
+	Metadata: "user.proto",
 }

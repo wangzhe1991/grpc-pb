@@ -3,8 +3,8 @@ syntax = "proto3";
 
 package grpc_sdk.errors;
 
-// mod + proto文件路径;package name
-option go_package = "github.com/wangzhe1991/grpc-sdk/vendor/errors;errors";
+// protoc-gen-go-error工具  mod + proto文件路径;package name
+option go_package = "gitee.com/krio/protoc-gen-go-errors/errors;errors";
 
 import "google/protobuf/descriptor.proto";
 

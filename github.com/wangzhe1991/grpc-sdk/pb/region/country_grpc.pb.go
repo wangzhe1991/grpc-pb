@@ -76,7 +76,7 @@ func (UnimplementedCountryServer) mustEmbedUnimplementedCountryServer() {}
 
 // UnsafeCountryServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to CountryServer will
-// result in compilation errorx.
+// result in compilation errors.
 type UnsafeCountryServer interface {
 	mustEmbedUnimplementedCountryServer()
 }

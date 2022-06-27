@@ -1,37 +1,49 @@
-.PHONY: gitag all error copy
-# 注意: 新的protoc-gen-go插件已经不支持plugins选项
-# error-proto路径
-ERRORX_INPUT_DIR  = ./errorx
-ERRORX_OUTPUT_DIR = ./pb
+#### [ 注意: 新的protoc-gen-go插件已经不支持plugins选项 ]
 
+# sdk-pb目录
+SdkPbDir = pb
+# error配置
+ErrorxInputDir = errorx
+# 第三方proto目录
+ThirdPartyDir = third_party
+# sdk的git版本号
+TagName = v1.0.6
+# sdk业务proto地址
+ProtoCommonInput = proto/common
+ProtoUserInput   = proto/user
+ProtoRegionInput = proto/region
 
-THIRD_PARTY_DIR = ./vendor
-
-export TagName := v1.0.5
+.PHONY: gitag all pb error copypb
 gitag:
 	git add . && git commit -m "$(TagName)"
 	git push
 	git tag -a $(TagName) -m "$(TagName)" # 创建带标签的Tag
 	git push origin $(TagName)  # 推送Tag到远程
 
+all:
+	@make pb
+	@make error
+	@make copypb
 
-all :
-	protoc --proto_path=proto/common \
-	--proto_path=proto/user \
-	--proto_path=proto/region \
+pb:
+	@echo ">>>>>>>>>>>> [ gen sdk ] >>>>>>>>>>>>"
+	protoc --proto_path=$(ProtoCommonInput) \
+	--proto_path=$(ProtoUserInput) \
+	--proto_path=$(ProtoRegionInput) \
 	--go_out=. \
 	--go-grpc_out=. \
-	proto/common/*.proto \
-	proto/region/*.proto \
-	proto/user/*.proto \
+	$(ProtoCommonInput)/*.proto \
+	$(ProtoUserInput)/*.proto \
+	$(ProtoRegionInput)/*.proto
 
-copy:
+copypb:
+	@echo ">>>>>>>>>>>> [ copy pb ] >>>>>>>>>>>>"
 	cp -rf github.com/wangzhe1991/grpc-sdk/pb/* ./pb
 
 error:
-	@echo ">>> errors......"
+	@echo ">>>>>>>>>>>> [ gen errors ] >>>>>>>>>>>>"
 	protoc --proto_path=. \
-     --proto_path=$(THIRD_PARTY_DIR) \
-     --go_out=paths=source_relative:$(ERRORX_OUTPUT_DIR) \
-     --go-errors_out=paths=source_relative:$(ERRORX_OUTPUT_DIR) \
-     $(ERRORX_INPUT_DIR)/*.proto
+     --proto_path=$(ThirdPartyDir) \
+     --go_out=paths=source_relative:$(SdkPbDir) \
+     --go-errors_out=paths=source_relative:$(SdkPbDir) \
+     $(ErrorxInputDir)/*.proto
