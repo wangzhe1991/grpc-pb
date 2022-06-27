@@ -1,8 +1,13 @@
-.PHONY: gitag all
+.PHONY: gitag all error copy
 # 注意: 新的protoc-gen-go插件已经不支持plugins选项
+# error-proto路径
+ERRORX_INPUT_DIR  = ./errorx
+ERRORX_OUTPUT_DIR = ./pb
+
+
+THIRD_PARTY_DIR = ./vendor
 
 export TagName := v1.0.5
-.PHONY: gitag copy
 gitag:
 	git add . && git commit -m "$(TagName)"
 	git push
@@ -22,3 +27,11 @@ all :
 
 copy:
 	cp -rf github.com/wangzhe1991/grpc-sdk/pb/* ./pb
+
+error:
+	@echo ">>> errors......"
+	protoc --proto_path=. \
+     --proto_path=$(THIRD_PARTY_DIR) \
+     --go_out=paths=source_relative:$(ERRORX_OUTPUT_DIR) \
+     --go-errors_out=paths=source_relative:$(ERRORX_OUTPUT_DIR) \
+     $(ERRORX_INPUT_DIR)/*.proto

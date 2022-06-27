@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.28.0
 // 	protoc        v3.19.0
-// source: user.proto
+// source: user_error.proto
 
 package user
 
