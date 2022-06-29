@@ -4,7 +4,7 @@ package grpc_sdk.errorx;
 option go_package = "github.com/wangzhe1991/grpc-sdk/errorx;errorx";
 import "errors/errors.proto";
 
-enum TestErrorReason {
+enum ErrorReason {
   option (errors.settings) = {
     default_http_code: 500       // 默认http code
     start_biz_code   : 100001    // 业务code起始值

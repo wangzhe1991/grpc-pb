@@ -7,7 +7,7 @@ ErrorxInputDir = errorx
 # 第三方proto目录
 ThirdPartyDir = third_party
 # sdk的git版本号
-TagName = v1.0.6
+TagName = v1.0.7
 # sdk业务proto地址
 ProtoCommonInput = proto/common
 ProtoUserInput   = proto/user
