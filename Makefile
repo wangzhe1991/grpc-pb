@@ -45,5 +45,5 @@ error:
 	protoc --proto_path=. \
      --proto_path=$(ThirdPartyDir) \
      --go_out=paths=source_relative:$(SdkPbDir) \
-     --go-errors_out=paths=source_relative:$(SdkPbDir) \
+     --go-errorx_out=paths=source_relative:$(SdkPbDir) \
      $(ErrorxInputDir)/*.proto
